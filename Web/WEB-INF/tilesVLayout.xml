@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+   
+   <tiles-definitions>
+       <definition name="myBaseLayout" template="/MyBaseLayout.jsp">
+           <put-attribute name="title" value="Money-Manager"/>
+           <put-attribute name="body" value="/dashBoard.jsp"/>
+       </definition>
+       
+        <definition name="tiles.userHomePage" extends="myBaseLayout">
+            <put-attribute name="title" value="Money-Manager"/> 
+        </definition> 
+        
+       <!-- Code Groups -->
+       <definition name="tiles.AddCodeGroup" extends="myBaseLayout">
+           <put-attribute name="title" value="Add Code Group"/>
+           <put-attribute name="body" value="/addCodeGroup.jsp"/>
+       </definition>
+       <definition name="tiles.ViewCodeGroup" extends="myBaseLayout">
+           <put-attribute name="title" value="View Code Groups"/>
+           <put-attribute name="body" value="/viewCodeGroups.jsp"/>
+       </definition>
+       <definition name="tiles.EditCodeGroup" extends="myBaseLayout">
+           <put-attribute name="title" value="Edit Code Group"/>
+           <put-attribute name="body" value="/editCodeGroup.jsp"/>
+       </definition>
+       
+       <!-- Code Values -->
+       <definition name="tiles.AddCodeValues" extends="myBaseLayout">
+           <put-attribute name="title" value="Add Code Value"/>
+           <put-attribute name="body" value="/addCodeValueRecord.jsp"/>
+       </definition>
+       <definition name="tiles.ViewCodeValues" extends="myBaseLayout">
+           <put-attribute name="title" value="View Code Value"/>
+           <put-attribute name="body" value="/ViewCodeValues.jsp"/>
+       </definition>
+       <definition name="tiles.EditCodeValue" extends="myBaseLayout">
+           <put-attribute name="title" value="Edit Code Value"/>
+           <put-attribute name="body" value="/editCodeValues.jsp"/>
+       </definition>
+       
+       <!-- user Income -->
+       <definition name="tiles.IncomeGrid" extends="myBaseLayout">
+           <put-attribute name="title" value="User Incomes"/>
+           <put-attribute name="body" value="/incomeGrid.jsp"/>
+       </definition>
+
+       <!-- user Expenses -->
+       
+       <definition name="tiles.ExpenseGrid" extends="myBaseLayout">
+           <put-attribute name="title" value="Expenses"/>
+           <put-attribute name="body" value="/expenseGrid.jsp"/>
+       </definition>
+       
+       <!-- user Category -->
+       
+       <definition name="tiles.ViewUserCategories" extends="myBaseLayout">
+           <put-attribute name="title" value="User Categories"/>
+           <put-attribute name="body" value="/category.jsp"/>
+       </definition>
+       
+       <!-- Payee -->
+       <definition name="tiles.addPayee" extends="myBaseLayout">
+           <put-attribute name="title" value="Add Payee"/>
+           <put-attribute name="body" value="/addPayee.jsp"/>
+       </definition>
+       <definition name="tiles.ViewPayees" extends="myBaseLayout">
+           <put-attribute name="title" value="Payees List"/>
+           <put-attribute name="body" value="/viewPayees.jsp"/>
+       </definition>
+       <definition name="tiles.EditPayee" extends="myBaseLayout">
+           <put-attribute name="title" value="Edit Payee"/>
+           <put-attribute name="body" value="/editPayee.jsp"/>
+       </definition>
+       
+       <!-- DashBoard -->
+       <definition name="tiles.viewDashBoard" extends="myBaseLayout">
+           <put-attribute name="title" value="DashBoard"/>
+           <put-attribute name="body" value="/dashBoard.jsp"/>
+       </definition>
+       
+       <!-- Budget -->
+       <definition name="tiles.ViewBudgets" extends="myBaseLayout">
+           <put-attribute name="title" value="Budgets"/>
+           <put-attribute name="body" value="/budget.jsp"/>
+       </definition>
+       
+       <definition name="tiles.IncomeEditor" extends="myBaseLayout">
+           <put-attribute name="title" value="Income Editor"/>
+           <put-attribute name="body" value="/incomeEditor.jsp"/>
+       </definition>
+       <definition name="layoutTwo" extends="myBaseLayout">
+           <put-attribute name="title" value="Tittle Two"/>
+           <put-attribute name="body" value="/login.jsp"/>
+       </definition>
+       
+   </tiles-definitions>

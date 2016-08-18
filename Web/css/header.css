@@ -1,0 +1,111 @@
+body
+{
+	width: 1200px;
+	/* margin: 0 auto; */
+}
+.wrapper
+{
+	width: 1200px;
+	height: auto;
+	text-align: center;
+	display: table-cell;
+	position: relative;
+	top:-4px;
+	left:-5px;
+/* 	margin: 0 auto; */
+	
+}
+.headerMenu
+{
+	float:right; 
+	margin-right:1px; 
+	margin-top:1px; 
+	text-align:left; 
+}
+.headerMenu ul
+{
+	height: 50px;
+	list-style: none;
+	padding: 0;
+	margin: 0;	
+	float: right;	
+}
+.headerMenu ul li
+{
+	display: block;
+	position: relative;
+	float: right;
+}
+.headerMenu ul li a
+{
+	display: block;
+	padding: 5px 20px;
+	text-decoration: none;
+	white-space: nowrap;
+	background: transparent;
+	color:black;
+}
+
+
+ul.v_menu
+{
+	width: 200px;
+	height: 650px;
+	list-style: none;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	box-shadow: 0px 0px 2px #757575;
+	background: #757575;
+	float: left;
+}
+ul.v_menu li
+{
+	display: block;
+	position: relative;	
+	background: #757575;
+	
+}
+ul.v_menu li a
+{	
+	display: block;
+	padding: 10px 20px;
+	text-decoration: none;
+	white-space: nowrap;
+	text-align:left;	
+	color: #fff;
+}
+ul.v_menu li a:hover,ul.v_menu li a:active,ul.v_menu li a:focus
+{
+	color:black;
+	background: white;
+}
+.active
+{
+color: black !important;
+background: white;
+}
+/**************************** Header Section Starts ***************************/
+.header
+{
+	width: 100%;
+	height: 100px;
+    background: url(../image/header.jpg);
+    background-repeat: no-repeat;
+
+}
+
+/**************************** Footer Section Starts ***************************/
+.footer
+{
+  float: right;
+  width: 900px;
+  font-family: Tahoma;
+  font-size: 8pt;
+  font-weight: normal;
+  color: #616161;
+  text-align: left;
+  margin-top: 18px;
+  clear: both;
+  margin-bottom: 10px;
+}

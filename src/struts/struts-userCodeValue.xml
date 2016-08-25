@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="userCodeValues" namespace="/" extends="struts-default, json-default">
+        
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+	    
+    	<action name="viewUserCodeValues" class="com.hibernate.action.UserCodeValueAction">
+            <result name="success" type="tiles">tiles.ViewUserCategories</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="addUserCodeValue" class="com.hibernate.action.UserCodeValueAction" method="addRecord">
+            <result name="success" type="tiles">tiles.ViewUserCategories</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="initUserCodeValues" class="com.hibernate.action.UserCodeValueAction" method="initialize">
+		    <result name="success" type="tiles">tiles.AddUserCategory</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteUserCodeValue" class="com.hibernate.action.UserCodeValueAction" method="deleteUserCodeValue">
+		    <result name="success" type="tiles">tiles.ViewUserCategories</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="editUserCodeValue" class="com.hibernate.action.UserCodeValueAction" method="editCodeValues">
+		    <result name="success" type="tiles">tiles.EditUserCategories</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="updateUserCodeValue" class="com.hibernate.action.UserCodeValueAction" method="updateRecord">
+		    <result name="success" type="tiles">tiles.ViewUserCategories</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="userCodeValues">
+		    <result name="success" type="tiles">tiles.ViewUserCategories</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		    
+		<!-- Json -->
+		
+		<action name="viewUserCategories" class="com.hibernate.action.UserCodeValueAction" method="initialize">
+		    <result name="success" type="tiles">tiles.ViewUserCategories</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addUserCodeValueJson" class="com.hibernate.action.UserCodeValueAction" method="addRecord">
+		    <result type="json"></result>
+		</action>
+		<action name="deleteUserCodeValueJson" class="com.hibernate.action.UserCodeValueAction" method="deleteUserCodeValue">
+		    <result type="json"></result>
+		</action>
+		<action name="editUserCodeValueJson" class="com.hibernate.action.UserCodeValueAction" method="editCodeValues">
+		    <result type="json"></result>
+		</action>
+		<action name="updateUserCodeValueJson" class="com.hibernate.action.UserCodeValueAction" method="updateRecord">
+		    <result type="json"></result>
+		</action>
+		<action name="refreshUserCategoryData" class="com.hibernate.action.DataTableCategoryAction" method="refreshCategoryData">
+		    <result type="json"></result>
+		</action>
+		
+	</package>
+</struts>

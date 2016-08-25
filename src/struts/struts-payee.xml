@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="payee" namespace="/" extends="struts-default">
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+	    
+		<action name="redirectToAddPayee" class="com.hibernate.action.PayeeAction">
+		    <result name="success" type="tiles">tiles.addPayee</result>
+		    <!-- <result name="success">/addIncome.jsp</result> -->
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addPayee" class="com.hibernate.action.PayeeAction" method="addPayee">
+		    <result name="success" type="tiles">tiles.ViewPayees</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="viewPayees" class="com.hibernate.action.PayeeAction" method="viewPayees">
+		    <result name="success" type="tiles">tiles.ViewPayees</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deletePayee" class="com.hibernate.action.PayeeAction" method="deletePayee">
+		    <result name="success" type="tiles">tiles.ViewPayees</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="editPayee" class="com.hibernate.action.PayeeAction" method="editPayee">
+		    <result name="success" type="tiles">tiles.EditPayee</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="updatePayee" class="com.hibernate.action.PayeeAction" method="updatePayee">
+		    <result name="success" type="tiles">tiles.ViewPayees</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>

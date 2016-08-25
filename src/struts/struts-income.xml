@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="income" namespace="/" extends="struts-default, json-default">
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+	    <interceptors>
+            <interceptor name="checkLoginInterceptor" class="com.hibernate.action.interceptors.CheckLoginInterceptor"/>
+            
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="checkLoginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="loginStack"/>
+        
+        <action name="viewIncomeGrid" class="com.hibernate.action.UserIncomeAction" method="initialize">
+		    <result name="success" type="tiles">tiles.IncomeGrid</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+        
+		<action name="redirectToAddIncome" class="com.hibernate.action.UserIncomeAction" method="initialize">
+		    <result name="success" type="tiles">tiles.addIncome</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addIncomeRecord" class="com.hibernate.action.UserIncomeAction" method="addIncome">
+		    <!-- <result name="success" type="tiles">tiles.ViewUserIncomes</result> -->
+		    <result name="success" type="tiles">tiles.IncomeGrid</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="viewUserIncomes" class="com.hibernate.action.UserIncomeAction" method="viewUserIncomes">
+		    <result name="success" type="tiles">tiles.ViewUserIncomes</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteUserIncomes" class="com.hibernate.action.UserIncomeAction" method="deleteUserIncomes">
+		    <result name="success" type="tiles">tiles.ViewUserIncomes</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="editIncome" class="com.hibernate.action.UserIncomeAction" method="editIncome">
+		    <result name="success" type="tiles">tiles.EditUserIncomes</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="updateIncome" class="com.hibernate.action.UserIncomeAction" method="updateIncome">
+		    <result name="success" type="tiles">tiles.ViewUserIncomes</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- Jason -->
+		<action name="deleteUserIncomesJson" class="com.hibernate.action.UserIncomeAction" method="deleteUserIncomes">
+		    <result type="json"></result>
+		</action>
+		<action name="addIncomeJson" class="com.hibernate.action.UserIncomeAction" method="addIncome">
+		    <result type="json"></result>
+		</action>
+		<action name="refreshData" class="com.hibernate.action.UserIncomeAction" method="dataRefresh">
+		    <result type="json">
+		        <param name="excludeNullProperties">true</param>
+                <param name="noCache">true</param>
+		    </result>
+		</action>
+		<action name="editIncomeJson" class="com.hibernate.action.UserIncomeAction" method="editIncome">
+		    <result type="json"></result>
+		</action>
+		<action name="updateIncomeJson" class="com.hibernate.action.UserIncomeAction" method="updateIncome">
+		    <result type="json"></result>
+		</action>
+	</package>
+</struts>

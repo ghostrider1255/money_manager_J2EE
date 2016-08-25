@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="dataTable" namespace="/" extends="json-default">
+        
+		<action name="refreshIncomeData" class="com.hibernate.action.DataTableIncomeAction" method="incomeExecute">
+		    <result type="json"></result>
+		</action>
+		<action name="refreshExpenseData" class="com.hibernate.action.DataTableExpenseAction" method="expenseExecute">
+		    <result type="json"></result>
+		</action>
+		<action name="refreshBudgetData" class="com.hibernate.action.DataTableBudgetAction" method="refreshBudgetData">
+		    <result type="json"></result>
+		</action>
+	</package>
+</struts>

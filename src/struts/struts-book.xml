@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="book" namespace="/" extends="struts-default">
+        
+    	<action name="redirectAddBook" class="com.hibernate.action.BookAction" method="initialize">
+		    <result name="success">/addBook.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addBook" class="com.hibernate.action.BookAction" method="execute">
+		    <result name="success">/viewBooks.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="viewBooks" class="com.hibernate.action.BookAction" method="viewBooks">
+		    <result name="success">/viewBooks.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteBook" class="com.hibernate.action.BookAction" method="deleteBook">
+		    <result name="success">/viewBooks.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="viewChapter" class="com.hibernate.action.ChapterAction" method="initialize">
+		    <result name="success">/viewChapters.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addChapter" class="com.hibernate.action.ChapterAction" method="initialize">
+		    <result name="success">/addChapter.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+	</package>
+</struts>

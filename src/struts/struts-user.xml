@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="user" namespace="/" extends="struts-default, json-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+        <interceptors>
+            <interceptor name="checkLoginInterceptor" class="com.hibernate.action.interceptors.CheckLoginInterceptor"/>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="checkLoginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <action name="registerUser" class="com.hibernate.action.UserAction" method="registerUser">
+		    <result name="success" type="redirect">loginUser</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="loginUser" class="com.hibernate.action.UserAction" method="loginUser">
+		    <result name="success" type="tiles">tiles.userHomePage</result> 
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="logoutUser" class="com.hibernate.action.UserAction" method="logoutUser">
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="isUserNameAvailable" class="com.hibernate.action.UserAction" method="isUserNameAvailable">
+		    <result type="json"></result>
+		</action>
+	</package>
+</struts>

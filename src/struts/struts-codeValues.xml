@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="codeValues" namespace="/" extends="struts-default">
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+    	<action name="viewCodeValues" class="com.hibernate.action.CodeValuesAction">
+            <result name="success" type="tiles">tiles.ViewCodeValues</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="addCodeValueRecord" class="com.hibernate.action.CodeValuesAction" method="addRecord">
+            <result name="success" type="tiles">tiles.ViewCodeValues</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="initiateCodeValues" class="com.hibernate.action.CodeValuesAction" method="init">
+		    <result name="success" type="tiles">tiles.AddCodeValues</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteCodeValue" class="com.hibernate.action.CodeValuesAction" method="deleteCodeValue">
+		    <result name="success" type="tiles">tiles.ViewCodeValues</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="editCodeValue" class="com.hibernate.action.CodeValuesAction" method="editCodeValues">
+		    <result name="success" type="tiles">tiles.EditCodeValue</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="updateCodeValue" class="com.hibernate.action.CodeValuesAction" method="updateRecord">
+		    <result name="success" type="tiles">tiles.ViewCodeValues</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="codeValues">
+		    <result name="success" type="tiles">tiles.ViewCodeValues</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		    
+	</package>
+</struts>

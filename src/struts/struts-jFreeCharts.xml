@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="jFreeCharts" namespace="/" extends="struts-default, json-default, jfreechart-default">
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+	    <interceptors>
+            <interceptor name="checkLoginInterceptor" class="com.hibernate.action.interceptors.CheckLoginInterceptor"/>
+            
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="checkLoginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="loginStack"/>
+        
+        <action name="displayChart" class="com.hibernate.action.JFreeChartAction">
+            <result name="success" type="chart">
+                <param name="value">chart</param>
+                <param name="type">jpeg</param>
+                <param name="width">400</param>
+                <param name="height">250</param>
+            </result>
+        </action>
+        
+        <action name="displayExpenseCategoryChart" class="com.hibernate.action.JFreeChartAction" method="expenseCategoryChart">
+            <result name="success" type="chart">
+                <param name="value">expenseCategoryChart</param>
+                <param name="type">jpeg</param>
+                <param name="width">400</param>
+                <param name="height">250</param>
+            </result>
+        </action>
+        
+        <action name="monthWiseBarChart" class="com.hibernate.action.JFreeChartAction" method="monthWiseBarChart">
+            <result name="success" type="chart">
+                <param name="value">monthWiseBarChart</param>
+                <param name="type">jpeg</param>
+                <param name="width">700</param>
+                <param name="height">400</param>
+            </result>
+        </action>
+	</package>
+</struts>

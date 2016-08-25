@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.convention.result.path" value="/WEB-INF/"/>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+    
+    <package name="expense" namespace="/" extends="struts-default, json-default">
+    	<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+	    
+    	<interceptors>
+            <interceptor name="checkLoginInterceptor" class="com.hibernate.action.interceptors.CheckLoginInterceptor"/>
+            
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="checkLoginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="loginStack"/>
+        
+    	<action name="viewExpenseGrid" class="com.hibernate.action.UserExpenseAction" method="initialize">
+		    <result name="success" type="tiles">tiles.ExpenseGrid</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		<action name="redirectToAddExpense" class="com.hibernate.action.UserExpenseAction" method="initialize">
+		    <result name="success" type="tiles">tiles.addExpense</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="addExpense" class="com.hibernate.action.UserExpenseAction" method="addExpense">
+		    <!-- <result name="success" type="tiles">tiles.ViewUserExpenses</result> -->
+		    <result name="success" type="tiles">tiles.ExpenseGrid</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="viewUserExpense" class="com.hibernate.action.UserExpenseAction" method="viewUserExpense">
+		    <result name="success" type="tiles">tiles.ViewUserExpenses</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteUserExpense" class="com.hibernate.action.UserExpenseAction" method="deleteUserExpense">
+		    <result name="success" type="tiles">tiles.ViewUserExpenses</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="editExpense" class="com.hibernate.action.UserExpenseAction" method="editExpense">
+		    <result name="success" type="tiles">tiles.EditUserExpense</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="updateExpense" class="com.hibernate.action.UserExpenseAction" method="updateExpense">
+		    <result name="success" type="tiles">tiles.ViewUserExpenses</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- Jason -->
+		<action name="deleteUserExpenseJson" class="com.hibernate.action.UserExpenseAction" method="deleteUserExpense">
+		    <result type="json"></result>
+		</action>
+		<action name="addExpenseJson" class="com.hibernate.action.UserExpenseAction" method="addExpense">
+		    <result type="json"></result>
+		</action>
+		<action name="editExpenseJson" class="com.hibernate.action.UserExpenseAction" method="editExpense">
+		    <result type="json"></result>
+		</action>
+		<action name="updateExpenseJson" class="com.hibernate.action.UserExpenseAction" method="updateExpense">
+		    <result type="json"></result>
+		</action>
+	</package>
+</struts>
